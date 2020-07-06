@@ -7,11 +7,14 @@
 
       <button mat-button routerLink="/">PokeStore</button>
       <button mat-button routerLink="/about">Sobre</button>
-
-        <a href="https://www.linkedin.com/in/yandiro/" target="_blank" mat-button>Contato</a>
+      <a href="https://www.linkedin.com/in/yandiro/" target="_blank" mat-button>Contato</a>
     </div>
 
     <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button color="white" aria-label="Toggle sidenav button" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+
       <button mat-icon-button color="white" aria-label="Toggle sidenav button">
         <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
       </button>
