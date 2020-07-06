@@ -2,11 +2,19 @@
   <mat-toolbar-row>
     <span>Pokemon Store</span>
     <span class="spacer"></span>
+
+    <div fxShow="false" fxShow.gt-sm="true">
+
+      <button mat-flat-button color="primary">Primary</button>
+
+    </div>
+
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button color="white" aria-label="Toggle sidenav button">
         <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
       </button>
     </div>
+
   </mat-toolbar-row>
 </mat-toolbar>
 
