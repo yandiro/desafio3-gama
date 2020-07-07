@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PokeApiService } from '../poke-api.service';
+import { PageEvent } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-pokemon-list',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pokeService: PokeApiService) { }
+
+  private pokemonList;
+
+  //Paginator
+  length: number;
 
   ngOnInit(): void {
+    this.fetchPokemons();
+  }
+
+  fetchPokemons(offSet: number = 0, limit: number = 20) {
+    this.pokeService.fetchPokemons(offSet, limit)
+      .subscribe(
+        (res: any) => {
+          this.pokemonList = res;
+          console.log(this.pokemonList)
+
+          this.length = res.count;
+        },
+        err => { console.error('pokemonList', err) }
+      );
+  }
+
+  // MatPaginator Output
+  handlePageEvent(event: PageEvent) {
+    let limit, offSet;
+
+    limit = event.pageSize;
+    offSet = event.pageSize * (event.pageIndex + 1);
+
+    this.fetchPokemons(offSet, limit);
   }
 
 }
