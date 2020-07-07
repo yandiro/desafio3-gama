@@ -33,7 +33,6 @@ export class PokemonListComponent implements OnInit {
       .subscribe(
         (res: any) => {
           this.pokemonList = res;
-          console.log(this.pokemonList)
 
           this.length = res.count;
           this.fetchPokemonDetails();
@@ -48,7 +47,7 @@ export class PokemonListComponent implements OnInit {
 
       this.pokeService.fetchPokemonDetails(url)
         .subscribe(
-          res => { console.log(res); pokemon.details = res },
+          res => { pokemon.details = res },
           err => { console.error(err) }
         );
     });
@@ -59,6 +58,8 @@ export class PokemonListComponent implements OnInit {
   // MatPaginator
   length: number;
   handlePageEvent(event: PageEvent) {
+    this.show = true;
+
     let limit, offSet;
 
     limit = event.pageSize;
@@ -69,7 +70,6 @@ export class PokemonListComponent implements OnInit {
 
   addToCart(pokemon: any) {
     this.itemsInCart.push(pokemon);
-    console.log(this.itemsInCart);
   }
 
 }

@@ -1,16 +1,27 @@
 <div class="cart">
-  <mat-list>
-    <div mat-subheader>Folders</div>
-    <mat-list-item *ngFor="let item of itemsInCart">
-      <img mat-list-icon src="https://material.angular.io/assets/img/examples/shiba1.jpg">
-      <div mat-line>{{item.name}}</div>
-      <!-- <div mat-line> {{item.updated | date}} </div> -->
-    </mat-list-item>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Carrinho de Compras</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <!-- <div mat-subheader>Itens no carrinho</div> -->
+        <mat-list-item *ngFor="let item of itemsInCart; let i = index;">
+          <img mat-list-icon src="{{item.details.sprites.front_default}}">
+          <div mat-line>{{item.name}}</div>
+          <div mat-line>R$ {{item.details.weight}},00 </div>
 
-    <div *ngFor="let item of itemsInCart">
-      {{item.name}}
-    </div>
-
-
-  </mat-list>
+          <button mat-icon-button (click)="deleteFromCart(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="warn" (click)="clearCart()">CANCELAR</button>
+      <button mat-raised-button color="primary">COMPRAR</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
