@@ -20,7 +20,7 @@
             </span>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button style="margin: auto">COMPRAR</button>
+            <button mat-button style="margin: auto" (click)="addToCart(pokemon)">COMPRAR</button>
           </mat-card-actions>
         </mat-card>
       </div>
@@ -29,6 +29,6 @@
 
   </div>
   <div fxFlex="250px" fxHide="true" fxShow.gt-sm="true" class="shopping-cart">
-    <app-shopping-cart></app-shopping-cart>
+    <app-shopping-cart [itemsInCart]=itemsInCart></app-shopping-cart>
   </div>
 </div>

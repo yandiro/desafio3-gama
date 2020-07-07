@@ -6,12 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
+  
+  @Input() itemsInCart: any[] = [];
 
   constructor() { }
-
+  
   ngOnInit(): void {
   }
-
-  @Input() cartItems;
-
+  
+  public updateCart() {
+    // this.itemsInCart = this.cart.itemsInCart;
+    console.log('updateCart!!')
+  }
 }

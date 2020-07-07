@@ -10,9 +10,14 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class PokemonListComponent implements OnInit {
 
-  constructor(private pokeService: PokeApiService) { }
+  constructor(
+    private pokeService: PokeApiService
+    ) { }
 
   public pokemonList;
+
+  public itemsInCart: any[] = [];
+
 
   /** Template will list pokemons only if its true.
    * Preventing "Cannot read property 'results' of undefined" error */
@@ -31,7 +36,6 @@ export class PokemonListComponent implements OnInit {
           console.log(this.pokemonList)
 
           this.length = res.count;
-
           this.fetchPokemonDetails();
         },
         err => { console.error('pokemonList', err) }
@@ -61,6 +65,11 @@ export class PokemonListComponent implements OnInit {
     offSet = event.pageSize * (event.pageIndex + 1);
 
     this.fetchPokemons(offSet, limit);
+  }
+
+  addToCart(pokemon: any) {
+    this.itemsInCart.push(pokemon);
+    console.log(this.itemsInCart);
   }
 
 }
