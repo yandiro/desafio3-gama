@@ -1,0 +1,13 @@
+.display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.shopping-cart {
+  margin-left: 10px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

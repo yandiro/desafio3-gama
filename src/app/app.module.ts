@@ -10,6 +10,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+
 
 import { AppComponent } from './app.component';
 
@@ -40,7 +42,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     AppRoutingModule,
     MatBadgeModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

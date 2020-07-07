@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokeApiService } from '../poke-api.service';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -12,10 +12,12 @@ export class PokemonListComponent implements OnInit {
 
   constructor(private pokeService: PokeApiService) { }
 
-  private pokemonList;
+  public pokemonList;
 
-  //Paginator
-  length: number;
+  /** Template will list pokemons only if its true.
+   * Preventing "Cannot read property 'results' of undefined" error */
+  public show: boolean = false;
+
 
   ngOnInit(): void {
     this.fetchPokemons();
@@ -29,12 +31,29 @@ export class PokemonListComponent implements OnInit {
           console.log(this.pokemonList)
 
           this.length = res.count;
+
+          this.fetchPokemonDetails();
         },
         err => { console.error('pokemonList', err) }
       );
   }
 
-  // MatPaginator Output
+  fetchPokemonDetails() {
+    this.pokemonList.results.forEach(pokemon => {
+      let url: string = pokemon.url;
+
+      this.pokeService.fetchPokemonDetails(url)
+        .subscribe(
+          res => { console.log(res); pokemon.details = res },
+          err => { console.error(err) }
+        );
+    });
+
+    this.show = true;
+  }
+
+  // MatPaginator
+  length: number;
   handlePageEvent(event: PageEvent) {
     let limit, offSet;
 

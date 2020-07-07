@@ -17,12 +17,8 @@ export class PokeApiService {
   }
 
 
-  fetchPokemonDetails(id: number) {
-    this.http.get(`${this.BASE_URL}/${id}`)
-    .subscribe(
-      res => { console.log('details',  res) },
-      err => { console.error('details',  err) }
-    )
+  fetchPokemonDetails(url: string) {
+    return this.http.get(url)
   }
 
 }
