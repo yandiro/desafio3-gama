@@ -17,6 +17,7 @@ export class PokemonListComponent implements OnInit {
   public pokemonList;
 
   public itemsInCart: any[] = [];
+  public cartPrice: string;
 
 
   /** Template will list pokemons only if its true.
@@ -70,6 +71,9 @@ export class PokemonListComponent implements OnInit {
 
   addToCart(pokemon: any) {
     this.itemsInCart.push(pokemon);
-  }
 
+    //Creating a copy of the array so that ngOnChanges detect a change and fires
+    this.itemsInCart = [...this.itemsInCart]
+    
+  }
 }
