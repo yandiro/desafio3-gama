@@ -61,9 +61,6 @@ export class PokemonListComponent implements OnInit {
 
   addToCart(pokemon: any): void {
     this.cartService.addToCart(pokemon);
-    // this.itemsInCart.push(pokemon);
-
-    // this.cartService.itemsInCart$.next(this.itemsInCart);
   }
 
   // MatPaginator
