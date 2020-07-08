@@ -11,7 +11,7 @@
           <img mat-list-icon src="{{item.details.sprites.front_default}}">
           <div mat-line>{{item.name}}</div>
           <div mat-line>R$ {{item.details.weight}},00 </div>
-          <button mat-icon-button (click)="deleteFromCart(i)">
+          <button mat-icon-button (click)="deleteFromCart(i); $event.stopPropagation()">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -24,8 +24,8 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-button color="warn" (click)="clearCart()">LIMPAR</button>
-      <button mat-raised-button color="primary">FINALIZAR</button>
+      <button mat-button color="warn" (click)="clearCart(); $event.stopPropagation()">LIMPAR</button>
+      <button mat-raised-button color="primary" (click)="$event.stopPropagation()">FINALIZAR</button>
     </mat-card-actions>
   </mat-card>
 </div>
