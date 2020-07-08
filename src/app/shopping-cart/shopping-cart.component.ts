@@ -9,33 +9,17 @@ import { ShoppingCartService } from '../shopping-cart.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  cartPrice: string;
-  itemsInCart: any[];
-
-  constructor(private cartService: ShoppingCartService) { }
+  constructor(public cartService: ShoppingCartService) { }
 
   ngOnInit(): void {
-    this.watchCartService();
   }
 
   public clearCart(): void {
-    const length = this.itemsInCart.length;
-    this.itemsInCart.splice(0, length);
+    this.cartService.clearCart();
   }
 
   public deleteFromCart(index: number): void {
-    this.itemsInCart.splice(index, 1);
+    this.cartService.deleteFromCart(index);
   }
-
-  private fetchCart(): void {
-    this.cartPrice = this.cartService.cartPrice;
-    this.itemsInCart = this.cartService.cartItems;
-  }
-
-  private watchCartService() {
-    this.cartService.itemsInCart$.subscribe(() => {
-      this.fetchCart()
-    })
-  };
 
 }

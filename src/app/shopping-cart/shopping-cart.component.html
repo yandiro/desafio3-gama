@@ -7,7 +7,7 @@
     <mat-card-content>
       <mat-list>
         <!-- <div mat-subheader>Itens no carrinho</div> -->
-        <mat-list-item *ngFor="let item of itemsInCart; let i = index;">
+        <mat-list-item *ngFor="let item of cartService.cartItems; let i = index;">
           <img mat-list-icon src="{{item.details.sprites.front_default}}">
           <div mat-line>{{item.name}}</div>
           <div mat-line>R$ {{item.details.weight}},00 </div>
@@ -18,7 +18,7 @@
 
         <mat-list-item>
           <div mat-line>Total</div>
-          <div mat-line>R${{cartPrice}},00</div>
+          <div mat-line>R${{cartService.cartPrice}},00</div>
         </mat-list-item>
       </mat-list>
     </mat-card-content>

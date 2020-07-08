@@ -18,9 +18,6 @@ export class PokemonListComponent implements OnInit {
 
   public pokemonList;
 
-  public itemsInCart: any[] = [];
-  public cartPrice: string;
-
   // MatPaginator
   length: number;
 
@@ -63,12 +60,10 @@ export class PokemonListComponent implements OnInit {
   }
 
   addToCart(pokemon: any): void {
-    this.itemsInCart.push(pokemon);
+    this.cartService.addToCart(pokemon);
+    // this.itemsInCart.push(pokemon);
 
-    this.cartService.itemsInCart$.next(this.itemsInCart);
-    
-    // Creating a copy of the array so that ngOnChanges detect a change and fires
-    // this.itemsInCart = [...this.itemsInCart];
+    // this.cartService.itemsInCart$.next(this.itemsInCart);
   }
 
   // MatPaginator
