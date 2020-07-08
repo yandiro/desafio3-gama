@@ -13,8 +13,13 @@
         </div>
 
         <div fxShow="true" fxHide.gt-sm="true">
-          <button mat-icon-button color="white" aria-label="Toggle sidenav button" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+          <button mat-icon-button color="white" [matMenuTriggerFor]="menu" aria-label="Toggle sidenav button" matBadge="8" matBadgePosition="before"
+          matBadgeColor="accent">
             <mat-icon>shopping_cart</mat-icon>
+
+            <mat-menu #menu="matMenu">
+              <app-shopping-cart></app-shopping-cart>
+            </mat-menu>
           </button>
 
           <button mat-icon-button color="white" aria-label="Toggle sidenav button">
@@ -32,7 +37,6 @@
       <mat-sidenav-content>
         <div>
           <router-outlet></router-outlet>
-          <!-- <app-pokemon-list></app-pokemon-list> -->
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>

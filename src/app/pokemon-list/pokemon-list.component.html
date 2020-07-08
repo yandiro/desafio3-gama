@@ -7,13 +7,12 @@
       <div *ngFor="let pokemon of pokemonList.results">
         <mat-card *ngIf="pokemon.details">
           <mat-card-header>
-            <div mat-card-avatar></div>
             <mat-card-title class="capitalize">{{pokemon.name}}</mat-card-title>
           </mat-card-header>
-          <img mat-card-image src="{{pokemon.details.sprites.front_default}}" alt="Photo of {{pokemon.name}}">
+          <img mat-card-image src="{{pokemon.details.sprites.front_default}}" alt="Photo of {{pokemon.name}}" />
           <mat-card-content>
             <p>
-              Tipo<span *ngIf="pokemon.details.types.length > 1">(s)</span>:
+              Tipo<span *ngIf="pokemon.details.types.length > 1">s</span>:
             </p>
             <span *ngFor="let type of pokemon.details.types; let last = last">
               {{type.type.name}} <span *ngIf="!last">,</span>
@@ -29,6 +28,6 @@
 
   </div>
   <div fxFlex="300px" fxHide="true" fxShow.gt-sm="true" class="shopping-cart">
-    <app-shopping-cart [itemsInCart]=itemsInCart></app-shopping-cart>
+    <app-shopping-cart></app-shopping-cart>
   </div>
 </div>

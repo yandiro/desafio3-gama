@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,37 +9,33 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  @Input() itemsInCart: any[] = [];
-  @Input() cartPrice: string = '0';
+  cartPrice: string;
+  itemsInCart: any[];
 
-  constructor() { }
+  constructor(private cartService: ShoppingCartService) { }
 
   ngOnInit(): void {
+    this.watchCartService();
   }
 
-  ngOnChanges(): void {
-    this.updateCartPrice();
-  }
-
-
-  public clearCart() {
+  public clearCart(): void {
     const length = this.itemsInCart.length;
-    this.itemsInCart.splice(0, length)
-    this.updateCartPrice();
+    this.itemsInCart.splice(0, length);
   }
 
-  public deleteFromCart(index: number) {
+  public deleteFromCart(index: number): void {
     this.itemsInCart.splice(index, 1);
-    this.updateCartPrice();
   }
 
-  updateCartPrice() {
-    let total: number = 0;
-
-    this.itemsInCart.forEach(pokemon => {
-      total += pokemon.details.weight;
-    });
-
-    this.cartPrice = total.toString();
+  private fetchCart(): void {
+    this.cartPrice = this.cartService.cartPrice;
+    this.itemsInCart = this.cartService.cartItems;
   }
+
+  private watchCartService() {
+    this.cartService.itemsInCart$.subscribe(() => {
+      this.fetchCart()
+    })
+  };
+
 }

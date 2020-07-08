@@ -1,7 +1,6 @@
 <div class="cart">
-  <mat-card class="example-card">
+  <mat-card>
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>Carrinho de Compras</mat-card-title>
       <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
     </mat-card-header>
@@ -17,14 +16,12 @@
           </button>
         </mat-list-item>
 
-      <mat-list-item>
-        <div mat-line>Total</div>
-        <div mat-line>R${{cartPrice}},00</div>
-      </mat-list-item>
-
+        <mat-list-item>
+          <div mat-line>Total</div>
+          <div mat-line>R${{cartPrice}},00</div>
+        </mat-list-item>
       </mat-list>
     </mat-card-content>
-
 
     <mat-card-actions>
       <button mat-button color="warn" (click)="clearCart()">LIMPAR</button>
