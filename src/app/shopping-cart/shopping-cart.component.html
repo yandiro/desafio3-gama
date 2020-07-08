@@ -25,7 +25,7 @@
 
     <mat-card-actions>
       <button mat-button color="warn" (click)="clearCart(); $event.stopPropagation()">LIMPAR</button>
-      <button mat-raised-button color="primary" (click)="$event.stopPropagation()">FINALIZAR</button>
+      <button mat-raised-button color="primary" (click)="finalizePurchase(); $event.stopPropagation()">FINALIZAR</button>
     </mat-card-actions>
   </mat-card>
 </div>
